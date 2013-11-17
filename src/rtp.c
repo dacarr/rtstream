@@ -41,7 +41,7 @@ void rtp_payload_init(struct rtp *rt) {
 
 int rtp_payload(char *data, int len) {
 
-    memcpy(data+12, data, len);
+    memmove(data+12, data, len);
 
 	t += clock_rate;
 
@@ -81,7 +81,7 @@ int rtp_depayload(char *data, int len){
 
 	//Payload.
     //remove the rtp data.
-    memcpy(data, data+12, (len-12));
+    memmove(data, data+12, (len-12));
 	
     //return new len of data
     return (len-12);
